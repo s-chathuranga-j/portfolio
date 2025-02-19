@@ -1,41 +1,48 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 const Experience = () => {
+  const [showAll, setShowAll] = useState(false);
   const experiences = [
     {
-      company: 'Sysco LABS',
-      role: 'Senior Software Development Engineer in Test',
-      duration: '2021 - Present',
+      company: 'TrackMan',
+      role: 'Software Development Engineer in Test (SDET)',
+      duration: 'Mar 2022 - Dec 2024',
       contributions: [
-        'Led the implementation of end-to-end test automation frameworks using Cypress and Playwright',
-        'Established best practices for test automation and CI/CD pipelines',
-        'Mentored team members on test automation and quality practices'
-      ],
-      logo: '/company-logos/sysco-labs.png'
-    },
-    {
-      company: 'WSO2',
-      role: 'Senior Software Engineer',
-      duration: '2018 - 2021',
-      contributions: [
-        'Developed and maintained test automation frameworks for cloud-native applications',
-        'Implemented performance testing solutions using JMeter and K6',
-        'Contributed to open-source testing tools and frameworks'
+        'Developed and maintained automated testing frameworks for sports tracking systems',
+        'Led test automation initiatives and quality assurance processes',
+        'Collaborated with cross-functional teams to ensure product quality',
+        'Implemented CI/CD pipelines for automated testing workflows'
       ],
       logo: '/company-logos/wso2.png'
     },
     {
-      company: 'Virtusa',
-      role: 'Software Engineer',
-      duration: '2015 - 2018',
+      company: 'TurboTenant',
+      role: 'Software Development Engineer in Test (SDET)',
+      duration: 'Jul 2020 - Feb 2022',
       contributions: [
-        'Developed automated test suites for enterprise applications',
-        'Implemented continuous testing practices in Agile teams',
-        'Conducted training sessions on test automation tools'
+        'Implemented test automation strategies for rental property management applications',
+        'Designed and maintained automated testing frameworks',
+        'Improved test coverage and reliability of core features',
+        'Collaborated with developers to implement quality-first development practices'
       ],
-      logo: '/company-logos/virtusa.png'
+      logo: '/company-logos/turbotenant.png'
+    },
+    {
+      company: 'Riverty',
+      role: 'Quality Assurance Engineer',
+      duration: 'May 2018 - Jun 2020',
+      contributions: [
+        'Ensured the quality and reliability of financial services software through rigorous testing',
+        'Developed and executed comprehensive test plans',
+        'Implemented automated testing solutions for critical workflows',
+        'Collaborated with stakeholders to define and maintain quality standards'
+      ],
+      logo: '/company-logos/riverty.png'
     }
   ];
+
+  const visibleExperiences = showAll ? experiences : experiences.slice(0, 3);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -58,9 +65,35 @@ const Experience = () => {
     }
   };
 
+  const buttonVariants = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.2
+      }
+    },
+    tap: {
+      scale: 0.95
+    }
+  };
+
   return (
-    <section className="py-16 px-4">
-      <h2 className="section-title text-center">Professional Experience</h2>
+    <motion.section 
+      className="py-16 px-4"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <motion.h2 
+        className="section-title text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        Experience
+      </motion.h2>
       
       <motion.div
         className="max-w-4xl mx-auto mt-12"
@@ -68,38 +101,56 @@ const Experience = () => {
         initial="hidden"
         animate="visible"
       >
-        {experiences.map((exp, index) => (
-          <motion.div
-            key={exp.company}
-            className="timeline-item"
-            variants={itemVariants}
-          >
-            <div className="timeline-dot" />
-            <div className="card hover:scale-[1.02] transition-transform duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src={exp.logo}
-                  alt={`${exp.company} logo`}
-                  className="w-12 h-12 object-contain"
-                />
-                <div>
-                  <h3 className="text-xl font-bold text-primary dark:text-secondary">
-                    {exp.company}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">{exp.role}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-500">{exp.duration}</p>
+        <AnimatePresence>
+          {visibleExperiences.map((exp, index) => (
+            <motion.div
+              key={exp.company}
+              className="timeline-item"
+              variants={itemVariants}
+            >
+              <div className="timeline-dot" />
+              <div className={`timeline-content ${index % 2 === 0 ? 'left' : 'right'}`}>
+                <div className="card hover:scale-[1.02] transition-transform duration-300">
+                  <div className="flex items-center gap-4 mb-4 justify-start">
+                    <img
+                      src={exp.logo}
+                      alt={`${exp.company} logo`}
+                      className="w-12 h-12 object-contain"
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold text-primary dark:text-secondary">
+                        {exp.company}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400">{exp.role}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-500">{exp.duration}</p>
+                    </div>
+                  </div>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-left">
+                    {exp.contributions.map((contribution, i) => (
+                      <li key={i}>{contribution}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                {exp.contributions.map((contribution, i) => (
-                  <li key={i}>{contribution}</li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        {experiences.length > 3 && (
+          <div className="text-center mt-8">
+            <motion.button
+              onClick={() => setShowAll(!showAll)}
+              className="btn-primary bg-gradient-to-r from-primary to-secondary"
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              {showAll ? 'Show Less' : 'View More'}
+            </motion.button>
+          </div>
+        )}
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

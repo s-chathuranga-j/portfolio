@@ -28,11 +28,32 @@
   }
 
   .timeline-item {
-    @apply relative pl-8 pb-8 border-l-2 border-primary dark:border-secondary last:border-l-0;
+    @apply relative pb-8 w-full flex flex-col items-center;
+  }
+
+  .timeline-item::before {
+    @apply content-[''] absolute top-8 bottom-0 w-0.5 bg-primary dark:bg-secondary;
+  }
+
+  .timeline-item:last-child::before {
+    @apply h-0;
+  }
+
+  .timeline-content {
+    @apply w-full md:w-[calc(50%-2rem)] relative;
+  }
+
+  .timeline-content.left {
+    @apply md:float-left md:pr-8 md:text-right self-start;
+  }
+
+  .timeline-content.right {
+    @apply md:float-right md:pl-8 md:text-left self-end;
   }
 
   .timeline-dot {
-    @apply absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary dark:bg-secondary;
+    @apply absolute top-4 w-4 h-4 rounded-full bg-primary dark:bg-secondary;
+    left: calc(50% - 0.5rem);
   }
 
   .skill-tag {
