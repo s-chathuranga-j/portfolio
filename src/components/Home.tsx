@@ -17,12 +17,12 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mt-8 space-y-6"
+          className="mt-8 space-y-3"
         >
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-gradient font-raleway">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-gradient font-raleway mb-0 leading-tight py-1">
             Chathuranga Jayasinghe
           </h1>
-          <h2 className="text-2xl text-gray-700 dark:text-gray-300 font-raleway">
+          <h2 className="text-2xl text-gray-700 dark:text-gray-300 font-raleway mb-2">
             Senior SDET | Cypress Ambassador
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-400 font-raleway">
