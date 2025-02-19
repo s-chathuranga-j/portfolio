@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-light dark:bg-dark text-dark dark:text-light transition-colors duration-300 font-raleway;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-primary text-white rounded-lg hover:opacity-90 transition-opacity;
+  }
+
+  .card {
+    @apply bg-white dark:bg-dark border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-6 transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .nav-link {
+    @apply hover:text-primary dark:hover:text-secondary transition-colors duration-200;
+  }
+
+  .timeline-item {
+    @apply relative pl-8 pb-8 border-l-2 border-primary dark:border-secondary last:border-l-0;
+  }
+
+  .timeline-dot {
+    @apply absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary dark:bg-secondary;
+  }
+
+  .skill-tag {
+    @apply px-3 py-1 rounded-full bg-primary/10 dark:bg-secondary/10 text-primary dark:text-secondary;
+  }
+}
