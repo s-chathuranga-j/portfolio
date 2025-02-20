@@ -27,11 +27,11 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="aspect-square overflow-hidden rounded-full shadow-xl">
+          <div className="overflow-hidden rounded-lg">
             <img
               src="/me.png"
               alt="Chathuranga Jayasinghe"
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-contain"
             />
           </div>
         </motion.div>

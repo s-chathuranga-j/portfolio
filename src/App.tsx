@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="min-h-screen relative">
-      <Navigation />
+      <Navigation darkMode={darkMode} setDarkMode={setDarkMode} />
       <main>
         <Home />
         <About />
