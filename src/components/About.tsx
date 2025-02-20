@@ -27,11 +27,13 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <img
-            src="/me.png"
-            alt="Chathuranga Jayasinghe"
-            className="rounded-2xl shadow-xl w-full h-auto object-cover"
-          />
+          <div className="aspect-square overflow-hidden rounded-full shadow-xl">
+            <img
+              src="/me.png"
+              alt="Chathuranga Jayasinghe"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -41,7 +43,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <blockquote className="text-left text-lg text-gray-700 dark:text-gray-300 italic space-y-6">
+          <blockquote className="text-left text-lg text-gray-700 dark:text-gray-300 space-y-6">
             <motion.p
               className="leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
