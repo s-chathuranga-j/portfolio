@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import Home from './components/Home';
+import About from './components/About';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Navigation from './components/Navigation';
@@ -32,30 +33,11 @@ function App() {
   return (
     <div className="min-h-screen relative">
       <Navigation />
-      {/* Dark Mode Toggle */}
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="fixed top-4 right-4 p-2 rounded-full bg-white/10 dark:bg-dark/10 backdrop-blur-lg border border-white/20 dark:border-gray-800/20 shadow-lg transition-colors duration-200"
-        aria-label="Toggle Dark Mode"
-      >
-        {darkMode ? (
-          <SunIcon className="w-6 h-6 text-white" />
-        ) : (
-          <MoonIcon className="w-6 h-6 text-black" />
-        )}
-      </button>
-
-      {/* Main Content */}
-      <main className="container mx-auto px-4">
-        <div id="home">
-          <Home />
-        </div>
-        <div id="experience">
-          <Experience />
-        </div>
-        <div id="skills">
-          <Skills />
-        </div>
+      <main>
+        <Home />
+        <About />
+        <Experience />
+        <Skills />
         <div id="blog" className="py-16 px-4">
           <h2 className="section-title text-center">Blog</h2>
           <div className="max-w-4xl mx-auto mt-12">

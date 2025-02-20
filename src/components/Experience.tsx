@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const Experience = () => {
   const [showAll, setShowAll] = useState(false);
@@ -162,11 +163,19 @@ const Experience = () => {
                   </motion.div>
                   <motion.button
                     onClick={() => toggleDescription(exp.company)}
-                    className="mt-4 text-sm font-medium text-primary dark:text-secondary hover:opacity-80 transition-opacity"
+                    className="mt-4 text-sm font-medium text-primary dark:text-secondary hover:opacity-80 transition-opacity flex items-center justify-center w-full"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {expandedItems.includes(exp.company) ? "Hide details" : "View the role"}
+                    {expandedItems.includes(exp.company) ? (
+                      <>
+                        Hide details <ChevronUpIcon className="w-4 h-4 ml-1" />
+                      </>
+                    ) : (
+                      <>
+                        View details <ChevronDownIcon className="w-4 h-4 ml-1" />
+                      </>
+                    )}
                   </motion.button>
                 </div>
               </div>
