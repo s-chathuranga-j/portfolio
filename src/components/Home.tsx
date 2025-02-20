@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaMedium } from 'react-icons/fa';
+import { SiCypress } from 'react-icons/si';
 import Avatar from './Avatar';
 
 const Home = () => {
   const socialLinks = [
     { icon: FaGithub, url: 'https://github.com/ChathurangaJayasinghe', label: 'GitHub' },
     { icon: FaLinkedin, url: 'https://linkedin.com/in/chathuranga-jayasinghe', label: 'LinkedIn' },
-    { icon: FaMedium, url: 'https://medium.com/@schathurangaj', label: 'Medium' }
+    { icon: FaMedium, url: 'https://medium.com/@schathurangaj', label: 'Medium' },
+    { icon: SiCypress, url: 'https://www.cypress.io/blog/chathuranga-jayasinghe', label: 'Cypress Blog' }
   ];
 
   return (

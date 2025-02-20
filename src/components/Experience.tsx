@@ -3,6 +3,15 @@ import { useState } from 'react';
 
 const Experience = () => {
   const [showAll, setShowAll] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+
+  const toggleDescription = (company: string) => {
+    setExpandedItems(prev =>
+      prev.includes(company)
+        ? prev.filter(item => item !== company)
+        : [...prev, company]
+    );
+  };
   const experiences = [
     {
       company: 'TrackMan',
@@ -14,7 +23,7 @@ const Experience = () => {
         'Collaborated with cross-functional teams to ensure product quality',
         'Implemented CI/CD pipelines for automated testing workflows'
       ],
-      logo: '/company-logos/wso2.png'
+      logo: '/company-logos/trackman.png'
     },
     {
       company: 'TurboTenant',
@@ -55,12 +64,17 @@ const Experience = () => {
   };
 
   const itemVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: (index: number) => ({
+      opacity: 0,
+      x: index % 2 === 0 ? -100 : 100
+    }),
     visible: {
-      x: 0,
       opacity: 1,
+      x: 0,
       transition: {
-        duration: 0.5
+        type: "spring",
+        damping: 20,
+        stiffness: 100
       }
     }
   };
@@ -92,7 +106,7 @@ const Experience = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        Experience
+        Professional Experience
       </motion.h2>
       
       <motion.div
@@ -107,17 +121,23 @@ const Experience = () => {
               key={exp.company}
               className="timeline-item"
               variants={itemVariants}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
             >
               <div className="timeline-dot" />
               <div className={`timeline-content ${index % 2 === 0 ? 'left' : 'right'}`}>
                 <div className="card hover:scale-[1.02] transition-transform duration-300">
-                  <div className="flex items-center gap-4 mb-4 justify-start">
-                    <img
-                      src={exp.logo}
-                      alt={`${exp.company} logo`}
-                      className="w-12 h-12 object-contain"
-                    />
-                    <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="flex-shrink-0">
+                      <img
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
+                    <div className="flex-grow text-left">
                       <h3 className="text-xl font-bold text-primary dark:text-secondary">
                         {exp.company}
                       </h3>
@@ -125,11 +145,29 @@ const Experience = () => {
                       <p className="text-sm text-gray-500 dark:text-gray-500">{exp.duration}</p>
                     </div>
                   </div>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-left">
-                    {exp.contributions.map((contribution, i) => (
-                      <li key={i}>{contribution}</li>
-                    ))}
-                  </ul>
+                  <motion.div
+                    initial="collapsed"
+                    animate={expandedItems.includes(exp.company) ? "expanded" : "collapsed"}
+                    variants={{
+                      expanded: { height: "auto", opacity: 1 },
+                      collapsed: { height: 0, opacity: 0 }
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden">
+                    <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-left">
+                      {exp.contributions.map((contribution, i) => (
+                        <li key={i}>{contribution}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                  <motion.button
+                    onClick={() => toggleDescription(exp.company)}
+                    className="mt-4 text-sm font-medium text-primary dark:text-secondary hover:opacity-80 transition-opacity"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {expandedItems.includes(exp.company) ? "Hide details" : "View the role"}
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
