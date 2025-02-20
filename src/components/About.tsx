@@ -43,7 +43,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <blockquote className="text-left text-lg text-gray-700 dark:text-gray-300 space-y-6">
+          <blockquote className="text-left text-justify text-lg text-gray-700 dark:text-gray-300 space-y-6">
             <motion.p
               className="leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.8 }}
             >
-              Let's connect and explore how my expertise can contribute to your project's success! 🚀
+              Let's connect and explore how my expertise can contribute to your project's success!
             </motion.p>
           </blockquote>
         </motion.div>
