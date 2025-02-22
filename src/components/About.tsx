@@ -29,7 +29,7 @@ const About = () => {
         >
           <div className="overflow-hidden rounded-lg">
             <img
-              src="/me.png"
+              src="/portfolio/me.png"
               alt="Chathuranga Jayasinghe"
               className="w-full h-auto object-contain"
             />

@@ -24,7 +24,7 @@ const Experience = () => {
         'Collaborated with cross-functional teams to ensure product quality',
         'Implemented CI/CD pipelines for automated testing workflows'
       ],
-      logo: '/company-logos/trackman.png'
+      logo: '/portfolio/company-logos/trackman.png'
     },
     {
       company: 'TurboTenant',
@@ -36,7 +36,7 @@ const Experience = () => {
         'Improved test coverage and reliability of core features',
         'Collaborated with developers to implement quality-first development practices'
       ],
-      logo: '/company-logos/turbotenant.png'
+      logo: '/portfolio/company-logos/turbotenant.png'
     },
     {
       company: 'Riverty',
@@ -48,7 +48,7 @@ const Experience = () => {
         'Implemented automated testing solutions for critical workflows',
         'Collaborated with stakeholders to define and maintain quality standards'
       ],
-      logo: '/company-logos/riverty.png'
+      logo: '/portfolio/company-logos/riverty.png'
     }
   ];
 

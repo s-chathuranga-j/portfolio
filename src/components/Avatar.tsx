@@ -17,7 +17,7 @@ const Avatar = () => {
       />
       <div className="absolute inset-0 z-10">
         <img
-          src="/avatar.png"
+          src="/portfolio/avatar.png"
           alt="Profile"
           className="w-full h-full object-contain"
         />
